@@ -1,0 +1,1 @@
+{{ Html::textarea('%%itemName%%', (isset($data->%%itemName%%) ? $data->%%itemName%% : ''))->class(['kt-textarea'])->rows(4) }}
