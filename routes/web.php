@@ -15,3 +15,7 @@ require __DIR__ . '/backend/administrative/management.php';
 require __DIR__ . '/backend/administrative/session.php';
 
 require __DIR__ . '/backend/application/datatable.php';
+
+Route::get('/templates', function () {
+    return view('layouts.backend.default');
+});

@@ -1,271 +1,159 @@
-<div class="kt-sidebar-content flex grow shrink-0 py-5 pe-2" id="sidebar_content">
-    <div class="kt-scrollable-y-hover grow shrink-0 flex ps-2 lg:ps-5 pe-1 lg:pe-3" data-kt-scrollable="true" data-kt-scrollable-dependencies="#sidebar_header" data-kt-scrollable-height="auto" data-kt-scrollable-offset="0px" data-kt-scrollable-wrappers="#sidebar_content" id="sidebar_scrollable">
-        <!-- Sidebar Menu -->
-        <div class="kt-menu flex flex-col grow gap-1" data-kt-menu="true" data-kt-menu-accordion-expand-all="false" id="sidebar_menu">
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="../../index3.html" class="brand-link">
+        <img src="/assets/backend/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+        <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a>
 
-            <div class="kt-menu-item {{ (request()->is('dashboard')) ? 'active' : '' }}" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                <a href="/dashboard" class="kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]">
-                        <i class="ki-filled ki-element-11 text-lg"></i>
-                    </span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        Dashboards
-                    </span>
-                </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="/assets/backend/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
-
-            <div class="kt-menu-item" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                <a class="kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]" href="#" tabindex="0">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]"><i class="ki-filled ki-message-text-2"></i></span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        Messages
-                    </span>
-                </a>
+            <div class="info">
+                <a href="#" class="d-block">Alexander Pierce</a>
             </div>
-
-            @include('layouts.backend.__includes.sidebar-item')
-
-             @role('master-administrator')
-            <div class="kt-menu-item pt-2.25 pb-px">
-                <span class="kt-menu-heading uppercase text-xs font-medium text-muted-foreground ps-[10px] pe-[10px]">
-                    EXTENSIONS
-                </span>
-            </div>
-            <div class="kt-menu-item {{ (request()->is('dashboard/file-manager*')) ? 'active' : '' }}" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                <a href="/dashboard/file-manager" class="kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]"><i class="ki-filled ki-folder"></i></span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        File Manager
-                    </span>
-                </a>
-            </div>
-
-            <div class="kt-menu-item pt-2.25 pb-px">
-                <span class="kt-menu-heading uppercase text-xs font-medium text-muted-foreground ps-[10px] pe-[10px]">
-                    APPLICATIONS
-                </span>
-            </div>
-            <div class="kt-menu-item {{ (request()->is('dashboard/applications/datatables*')) ? 'show' : '' }}" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                <div class="kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]" tabindex="0">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]"><i class="ki-filled ki-abstract-21"></i></i></span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        Datatables
-                    </span>
-                    <span class="kt-menu-arrow text-muted-foreground w-[20px] shrink-0 justify-end ms-1 me-[-10px]">
-                        <span class="inline-flex kt-menu-item-show:hidden"><i class="ki-filled ki-plus text-[11px]"></i></span>
-                        <span class="hidden kt-menu-item-show:inline-flex"><i class="ki-filled ki-minus text-[11px]"></i></span>
-                    </span>
-                </div>
-                <div class="kt-menu-accordion gap-1 ps-[10px] relative before:absolute before:start-[20px] before:top-0 before:bottom-0 before:border-s before:border-border">
-                    <div class="kt-menu-item {{ (request()->is('dashboard/applications/datatables/generals*')) ? 'active' : '' }}">
-                        <a href="/dashboard/applications/datatables/generals" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary">
-                                Generals
-                            </span>
-                        </a>
-                    </div>
-                    <div class="kt-menu-item {{ (request()->is('dashboard/applications/datatables/relations*')) ? 'active' : '' }}">
-                        <a href="/dashboard/applications/datatables/relations" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary">
-                                Relations
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            @endrole
-
-            <div class="kt-menu-item pt-2.25 pb-px">
-                <span class="kt-menu-heading uppercase text-xs font-medium text-muted-foreground ps-[10px] pe-[10px]">
-                    OTHER
-                </span>
-            </div>
-
-            <div class="kt-menu-item {{ (request()->is('dashboard/profiles*')) ? 'show' : '' }}" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                <div class="kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]" tabindex="0">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]"><i class="ki-filled ki-user"></i></span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        Profiles
-                    </span>
-                    <span class="kt-menu-arrow text-muted-foreground w-[20px] shrink-0 justify-end ms-1 me-[-10px]">
-                        <span class="inline-flex kt-menu-item-show:hidden"><i class="ki-filled ki-plus text-[11px]"></i></span>
-                        <span class="hidden kt-menu-item-show:inline-flex"><i class="ki-filled ki-minus text-[11px]"></i></span>
-                    </span>
-                </div>
-                <div class="kt-menu-accordion gap-1 ps-[10px] relative before:absolute before:start-[20px] before:top-0 before:bottom-0 before:border-s before:border-border">
-                    <div class="kt-menu-item {{ (request()->is('dashboard/profiles/account-informations*')) ? 'active' : '' }}">
-                        <a href="/dashboard/profiles/account-informations" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary">
-                                Account Informations
-                            </span>
-                        </a>
-                    </div>
-                    <div class="kt-menu-item {{ (request()->is('dashboard/profiles/change-password*')) ? 'active' : '' }}">
-                        <a href="/dashboard/profiles/change-password" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary">
-                                Change Password
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="kt-menu-item">
-                <a href="javascript:;" id="exLogoutButton" data-kt-modal-toggle="#modalLogout" href="javascript:;" class="kt-menu-toggle kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]">
-                        <i class="ki-filled ki-exit-left"></i>
-                    </span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        Logout
-                    </span>
-                </a>
-            </div>
-
-            @role('master-administrator')
-            <div class="kt-menu-item pt-2.25 pb-px">
-                <span class="kt-menu-heading uppercase text-xs font-medium text-muted-foreground ps-[10px] pe-[10px]">
-                    ADMINISTRATIVES
-                </span>
-            </div>
-            <div class="kt-menu-item {{ (request()->is('dashboard/administratives/applications*')) ? 'show' : '' }}" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                <div class="kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]" tabindex="0">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]"><i class="ki-filled ki-setting-2 text-lg"></i></span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        Applications
-                    </span>
-                    <span class="kt-menu-arrow text-muted-foreground w-[20px] shrink-0 justify-end ms-1 me-[-10px]">
-                        <span class="inline-flex kt-menu-item-show:hidden"><i class="ki-filled ki-plus text-[11px]"></i></span>
-                        <span class="hidden kt-menu-item-show:inline-flex"><i class="ki-filled ki-minus text-[11px]"></i></span>
-                    </span>
-                </div>
-                <div class="kt-menu-accordion gap-1 ps-[10px] relative before:absolute before:start-[20px] before:top-0 before:bottom-0 before:border-s before:border-border">
-                    <div class="kt-menu-item {{ (request()->is('dashboard/administratives/applications/customizations*')) ? 'active' : '' }}">
-                        <a href="/dashboard/administratives/applications/customizations" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary"> Customizations </span>
-                        </a>
-                    </div>
-                    <div class="kt-menu-item {{ (request()->is('dashboard/administratives/applications/optimizations*')) ? 'active' : '' }}">
-                        <a href="/dashboard/administratives/applications/optimizations" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary"> Optimizations </span>
-                        </a>
-                    </div>
-                    <div class="kt-menu-item {{ (request()->is('dashboard/administratives/applications/settings*')) ? 'active' : '' }}">
-                        <a href="/dashboard/administratives/applications/settings" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary"> Settings </span>
-                        </a>
-                    </div>
-
-                    <div class="kt-menu-item flex-col-reverse" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                        <div class="kt-menu-link border border-transparent grow cursor-pointer gap-[14px] ps-[10px] pe-[10px] py-[8px]" tabindex="0">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary">
-                            </span>
-                            <span class="kt-menu-title text-2sm font-normal text-secondary-foreground">
-                                <span class="hidden kt-menu-item-show:!flex">
-                                    Show less
-                                </span>
-                                <span class="flex kt-menu-item-show:hidden">
-                                    Show 3 more
-                                </span>
-                            </span>
-                            <span class="kt-menu-arrow text-muted-foreground w-[20px] shrink-0 justify-end ms-1 me-[-10px]">
-                                <span class="inline-flex kt-menu-item-show:hidden"><i class="ki-filled ki-plus text-[11px]"></i></span>
-                                <span class="hidden kt-menu-item-show:inline-flex"><i class="ki-filled ki-minus text-[11px]"></i></span>
-                            </span>
-                        </div>
-                        <div class="kt-menu-accordion gap-1">
-                            <div class="kt-menu-item">
-                                <a class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]" href="html/demo1/account/appearance.html" tabindex="0">
-                                    <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                                    <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary">
-                                        Appearance
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="kt-menu-item">
-                                <a class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]" href="html/demo1/account/invite-a-friend.html" tabindex="0">
-                                    <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary">
-                                    </span>
-                                    <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary">
-                                        Invite a Friend
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="kt-menu-item">
-                                <a class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]" href="html/demo1/account/activity.html" tabindex="0">
-                                    <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary">
-                                    </span>
-                                    <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary">
-                                        Activity
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="kt-menu-item {{ (request()->is('dashboard/administratives/managements*')) ? 'show' : '' }}" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                <div class="kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]" tabindex="0">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]"><i class="ki-filled ki-security-user text-lg"></i></span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        Managements
-                    </span>
-                    <span class="kt-menu-arrow text-muted-foreground w-[20px] shrink-0 justify-end ms-1 me-[-10px]">
-                        <span class="inline-flex kt-menu-item-show:hidden"><i class="ki-filled ki-plus text-[11px]"></i></span>
-                        <span class="hidden kt-menu-item-show:inline-flex"><i class="ki-filled ki-minus text-[11px]"></i></span>
-                    </span>
-                </div>
-                <div class="kt-menu-accordion gap-1 ps-[10px] relative before:absolute before:start-[20px] before:top-0 before:bottom-0 before:border-s before:border-border">
-                    <div class="kt-menu-item {{ (request()->is('dashboard/administratives/managements/permissions*')) ? 'active' : '' }}">
-                        <a href="/dashboard/administratives/managements/permissions" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary"> Permissions </span>
-                        </a>
-                    </div>
-                    <div class="kt-menu-item {{ (request()->is('dashboard/administratives/managements/roles*')) ? 'active' : '' }}">
-                        <a href="/dashboard/administratives/managements/roles" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary"> Roles </span>
-                        </a>
-                    </div>
-                    <div class="kt-menu-item {{ (request()->is('dashboard/administratives/managements/users*')) ? 'active' : '' }}">
-                        <a href="/dashboard/administratives/managements/users" class="kt-menu-link border border-transparent items-center grow kt-menu-item-active:bg-accent/60 dark:menu-item-active:border-border kt-menu-item-active:rounded-lg hover:bg-accent/60 hover:rounded-lg gap-[14px] ps-[10px] pe-[10px] py-[8px]">
-                            <span class="kt-menu-bullet flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 kt-menu-item-active:before:bg-primary kt-menu-item-hover:before:bg-primary"></span>
-                            <span class="kt-menu-title text-2sm font-normal text-foreground kt-menu-item-active:text-primary kt-menu-item-active:font-semibold kt-menu-link-hover:!text-primary"> Users </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="kt-menu-item {{ (request()->is('dashboard/administratives/databases*')) ? 'active' : '' }}" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                <a href="/dashboard/administratives/databases" class="kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]">
-                        <i class="ki-filled ki-data text-lg"></i>
-                    </span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        Databases
-                    </span>
-                </a>
-            </div>
-
-            <div class="kt-menu-item {{ (request()->is('dashboard/administratives/sessions*')) ? 'active' : '' }}" data-kt-menu-item-toggle="accordion" data-kt-menu-item-trigger="click">
-                <a href="/dashboard/administratives/sessions" class="kt-menu-link flex items-center grow cursor-pointer border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px]">
-                    <span class="kt-menu-icon items-start text-muted-foreground w-[20px]">
-                        <i class="ki-filled ki-graph text-lg"></i>
-                    </span>
-                    <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
-                        Sessions
-                    </span>
-                </a>
-            </div>
-            @endrole
-
         </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-house text-sm"></i>
+                        <p> Dashboard </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../widgets.html" class="nav-link">
+                        <i class="nav-icon fas fa-list text-sm"></i>
+                        <p>
+                            Widgets
+                            <span class="right badge badge-danger">New</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Layout Options
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">6</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="../layout/top-nav.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Top Navigation</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/top-nav-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Top Navigation + Sidebar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/boxed.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Boxed</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/fixed-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Sidebar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/fixed-sidebar-custom.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Sidebar <small>+ Custom Area</small></p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/fixed-topnav.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Navbar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/fixed-footer.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Footer</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/collapsed-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Collapsed Sidebar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-header"> APPLICATIONS </li>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-list text-sm"></i>
+                        <p>
+                            Tables
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="../tables/simple.html" class="nav-link">
+                                <i class="far fa-circle nav-icon text-sm"></i>
+                                <p>Simple Tables</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../tables/data.html" class="nav-link active">
+                                <i class="far fa-circle nav-icon text-sm"></i>
+                                <p>DataTables</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../tables/jsgrid.html" class="nav-link">
+                                <i class="far fa-circle nav-icon text-sm"></i>
+                                <p>jsGrid</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-user text-sm"></i>
+                        <p> Profiles </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-right-to-bracket text-sm"></i>
+                    <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
+                        <p> Logout </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
     </div>
-</div>
+    <!-- /.sidebar -->
+</aside>
