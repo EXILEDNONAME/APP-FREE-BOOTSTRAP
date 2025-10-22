@@ -36,8 +36,28 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><i class="nav-icon fas fa-house text-sm"></i>
+                    <a href="/dashboard" class="nav-link"><i class="nav-icon fas fa-house text-sm"></i>
                         <p> Dashboard </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-envelope text-sm"></i>
+                        <p> Messages </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-hard-drive text-sm"></i>
+                        <p> File Manager </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-clock-rotate-left text-sm"></i>
+                        <p> Sessions </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-database text-sm"></i>
+                        <p> Databases </p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -111,31 +131,16 @@
                 </li>
 
                 <li class="nav-header"> APPLICATIONS </li>
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item {{ (request()->is('dashboard/applications/datatables/generals*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-list text-sm"></i>
-                        <p>
-                            Tables
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                        <p> Tables <i class="fas fa-angle-left right"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="../tables/simple.html" class="nav-link">
+                            <a href="/dashboard/applications/datatables/generals" class="nav-link {{ (request()->is('dashboard/applications/datatables/generals*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon text-sm"></i>
-                                <p>Simple Tables</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../tables/data.html" class="nav-link active">
-                                <i class="far fa-circle nav-icon text-sm"></i>
-                                <p>DataTables</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../tables/jsgrid.html" class="nav-link">
-                                <i class="far fa-circle nav-icon text-sm"></i>
-                                <p>jsGrid</p>
+                                <p> Generals</p>
                             </a>
                         </li>
                     </ul>
@@ -147,7 +152,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link"><i class="nav-icon fas fa-right-to-bracket text-sm"></i>
-                    <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
+                        <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
                         <p> Logout </p>
                     </a>
                 </li>
