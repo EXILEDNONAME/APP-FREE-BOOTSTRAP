@@ -17,13 +17,11 @@
                     <table id="exilednoname_table" class="table table-bordered table-striped" width="100%">
                         <thead>
                             <tr>
-                                <th class="align-middle"></th>
-                                <th class="align-middle"></th>
-                                <th class="align-middle"> No </th>
+                                <th class="align-middle" width="1"></th>
+                                <th class="align-middle" width="1"></th>
+                                <th class="align-middle" width="1"> No </th>
                                 @yield('table-header')
-                                <th class="align-middle">Platform(s)</th>
-                                <th class="align-middle">Engine version</th>
-                                <th class="align-middle">CSS grade</th>
+                                <th class="align-middle" width="1"></th>
                             </tr>
                         </thead>
                     </table>
@@ -39,6 +37,9 @@
     // TABLE INDEX
     $(document).ready(function() {
 
+        let defaultSort = sort.split(',').map((item, index) => {
+            return index === 0 ? parseInt(item.trim()) : item.trim();
+        });
         let table = $('#exilednoname_table').DataTable({
             // dom: 'tb',
             // info: false,
@@ -47,6 +48,11 @@
             serverSide: true,
             searchDelay: 2000,
             "pagingType": "simple_numbers",
+            rowId: 'Collocation',
+            select: {
+                style: 'multi',
+                selector: 'td:first-child .checkable',
+            },
             ajax: {
                 url: this_url,
                 data: function(ex) {
@@ -63,13 +69,17 @@
                     }
                 }
             },
+            headerCallback: function(thead, data, start, end, display) {
+                thead.getElementsByTagName('th')[0].innerHTML = `<input id="check" type="checkbox" class="kt-checkbox group-checkable" data-kt-datatable-row-check="true" value="0" />`;
+            },
             columns: [{
                     data: null,
                     name: 'checkbox',
+                    'className': 'text-center align-middle',
                     searchable: false,
                     orderable: false,
                     render: function(data, type, row, meta) {
-                        return `<input type="checkbox" class="kt-checkbox checkable" data-id="${row.id}">`;
+                        return `<input type="checkbox" class="checkable" data-id="${row.id}">`;
                     },
                 },
                 {
@@ -82,7 +92,7 @@
                     name: 'autonumber',
                     orderable: false,
                     searchable: false,
-                    'className': 'text-center',
+                    'className': 'text-center align-middle',
                     'width': '1',
                     render: function(data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
@@ -184,17 +194,17 @@
                     render: function(data, type, row) {
                         return `
                     <td>
-                        <div class="kt-menu" data-kt-menu="true">
-                            <div class="kt-menu-item" data-kt-menu-item-placement="bottom-end" data-kt-menu-item-placement-rtl="bottom-start" data-kt-menu-item-toggle="dropdown" data-kt-menu-item-trigger="hover">
-                                <button class="kt-menu-toggle kt-btn kt-btn-sm kt-btn-icon kt-btn-ghost"><i class="ki-filled ki-dots-vertical text-lg"></i></button>
-                                <div class="kt-menu-dropdown kt-menu-default" data-kt-menu-dismiss="true">
-                                    <div class="kt-menu-item"><a class="kt-menu-link" href="${this_url}/${row.id}"><span class="kt-menu-icon"><i class="ki-filled ki-search-list"></i></span><span class="kt-menu-title"> ${translations.default.label.view} </span></a></div>
-                                    <div class="kt-menu-item"><a class="kt-menu-link" href="${this_url}/${row.id}/edit"><span class="kt-menu-icon"><i class="ki-filled ki-message-edit"></i></span><span class="kt-menu-title"> ${translations.default.label.edit} </span></a></div>
-                                    <div class="kt-menu-item"><a class="kt-menu-link" data-id="${row.id}" data-kt-modal-toggle="#modalDelete"><span class="kt-menu-icon"><i class="ki-filled ki-trash-square"></i></span><span class="kt-menu-title"> ${translations.default.label.delete.delete} </span></a></div>
-                                    ${extension === 'management-users' ? `<div class="kt-menu-item"><a class="kt-menu-link" data-id="${row.id}" data-kt-modal-toggle="#modalResetPassword"><span class="kt-menu-icon"><i class="ki-filled ki-key-square"></i></span><span class="kt-menu-title"> ${translations.default.label.reset_password} </span></a></div>` : ''}
-                                </div>
-                            </div>
-                        </div>
+                        <div class="btn-group">
+                    <button type="button" class="btn btn-default" data-toggle="dropdown">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                      
+                    </button>
+                    <div class="dropdown-menu" role="menu" style="">
+                      <a class="dropdown-item" href="#"> View </a>
+                      <a class="dropdown-item" href="#"> Edit </a>
+                      <a class="dropdown-item" href="#"> Delete </a>
+                    </div>
+                  </div>
                     </td>`;
                     }
                 }
@@ -266,11 +276,7 @@
                     }
                 },
             ],
-            rowId: 'Collocation',
-            select: {
-                style: 'multi',
-                selector: 'td:first-child .checkable',
-            }
+            order: [defaultSort]
         });
 
         $('#export_print').on('click', function(e) {
@@ -293,6 +299,33 @@
             e.preventDefault();
             table.button(4).trigger();
         });
+    });
+
+    // GROUP CHECKABLE
+    $('#exilednoname_table').on('change', '.group-checkable', function() {
+        const checked = $(this).is(':checked');
+
+        $('#exilednoname_table').DataTable().rows().every(function() {
+            const $checkbox = $(this.node()).find('.checkable');
+            $checkbox.prop('checked', checked);
+            checked ? this.select() : this.deselect();
+        });
+
+        const count = $('#exilednoname_table').DataTable().rows({
+            selected: true
+        }).count();
+        $('#exilednoname_selected').text(count);
+        const isChecked = count > 0;
+        $('#checkbox_batch').toggleClass('hidden', !isChecked);
+        toast_notification(isChecked ? translations.default.notification.row_checked : translations.default.notification.row_unchecked);
+    });
+
+    // CHECKABLE
+    $('#exilednoname_table').on('change', '.checkable', function() {
+        $(this).closest('tr').toggleClass('selected', $(this).is(':checked'));
+        $('#exilednoname_selected').html($('#exilednoname_table').DataTable().rows('.selected').nodes().length);
+        $('#checkbox_batch').toggleClass('hidden', $('#exilednoname_table').DataTable().rows('.selected').nodes().length === 0);
+        document.querySelector('#check').indeterminate = $('#exilednoname_table').DataTable().rows('.selected').nodes().length > 0;
     });
 </script>
 @endpush

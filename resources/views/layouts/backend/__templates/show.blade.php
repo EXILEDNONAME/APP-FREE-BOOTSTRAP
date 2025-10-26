@@ -1,6 +1,60 @@
 @extends('layouts.backend.default')
 
 @section('content')
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"> Main </h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus text-xs"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-edit text-xs"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-print text-xs"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-trash text-xs"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times text-xs"></i></button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" width="100%">
+                        @yield('table-header')
+                        <tr>
+                            <td class="align-middle text-nowrap"> {{ __('default.label.created_at') }} </td>
+                            <td class="text-nowrap">
+                                <div class="overflow-x-auto">
+                                    {{ \Carbon\Carbon::parse($data->created_at)->format('d F Y, H:i') }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle text-nowrap"> {{ __('default.label.updated_at') }} </td>
+                            <td> {{ \Carbon\Carbon::parse($data->updated_at)->format('d F Y, H:i') }} </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"> Activities </h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus text-xs"></i></button>
+                    <button type="button" class="btn btn-tool"><i class="fas fa-sync text-xs"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times text-xs"></i></button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="lg:col-span-2">
     <div class="grid">
         <div id="printData">
@@ -181,7 +235,7 @@
                                                 @endif
                                             </div>
                                             <span class="text-xs text-secondary-foreground">
-                                                @if(!empty($acts->causer->name)) 
+                                                @if(!empty($acts->causer->name))
                                                 {{ $acts->created_at->diffForHumans() }}, {{ $acts->causer->name }}
                                                 @else {{ $acts->created_at->diffForHumans() }}, System
                                                 @endif

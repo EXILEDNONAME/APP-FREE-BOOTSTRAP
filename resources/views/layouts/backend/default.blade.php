@@ -157,6 +157,8 @@
                 </div>
             </section>
 
+            <button id="test" aria-label="Try me! Example: passing a parameter, you can execute something else for 'Cancel'">Try me!</button>
+
             <section class="content">
                 <div class="container-fluid">
                     @yield('content')
@@ -166,10 +168,14 @@
 
         @include('layouts.backend.__includes.footer')
 
+
+
         <aside class="control-sidebar control-sidebar-dark"></aside>
     </div>
 
     <script src="/assets/backend/plugins/jquery/jquery.min.js"></script>
+    <script src="/assets/backend/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="/assets/backend/plugins/toastr/toastr.min.js"></script>
     <script src="/assets/backend/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/backend/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="/assets/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -223,8 +229,36 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+    <script>
+        document.querySelector('#test').addEventListener('click', function() {
+            swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel!",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swal.fire({
+                        title: "Cancelled",
+                        text: "Your imaginary file is safe :)",
+                        icon: "error"
+                    });
+                }
+            });
         });
     </script>
 </body>

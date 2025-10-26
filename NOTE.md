@@ -15,23 +15,8 @@ php artisan crud:generate Posts --fields_from_file="./resources/cruds/sample.jso
 php artisan crud:generate SuratMasuk --fields_from_file="./resources/cruds/sample.json" --controller-namespace="Mail" --model-namespace="Mail" --view-path="mail" --route-group="mail"
 
 # TO DO
-- [OK] PAGE SETTINGS -> EDIT LOGO DESKTOP/MOBILE
-- [OK] PAGE FILE MANAGER
-- [OK] PAGE PROFILES
-- [OK] PAGE APPLICATIONS
-- [OK] PAGE MANAGEMENTS
-- [OK] PAGE DATABASE
-- [OK] PAGE SESSIONS
-
-- [OK] GENERATOR PAGES
-- [OK] PAGE AUTHENTICATION
-    - [OK] LOGIN
-    - [OK] FORGOT PASSWORD
-    - [OK] VERIFY EMAIL
-    - [OK] REGISTER
-    - [OK] SET NEW PASSWORD
-    - [OK] CUSTOM STYLE EMAIL
-
-- [OK] FORM DATERANGE
-- [OK] EDIT FORM MOBILE DISPLAY
-- DATATABLE RELATION
+- PAGE INDEX
+- PAGE SHOW
+- PAGE CREATE
+- PAGE EDIT
+- FILE MANAGER
